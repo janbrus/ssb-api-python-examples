@@ -9,4 +9,6 @@ Laks-no is a basic example on using http POST to query API:Create your own datas
 
 Klasskommune shows how to use Statistics Norways [Statistical Classifications and Codelists](https://www.ssb.no/en/klass/) API, to get municipality IDs.
 
-The plan is to post all examples both in Norwgian and in English.
+Two-tables-in-one-chart combines datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
+
+The plan is to post all examples both in Norwegian and in English.

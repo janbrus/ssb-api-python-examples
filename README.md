@@ -11,4 +11,8 @@ Klasskommune shows how to use Statistics Norways [Statistical Classifications an
 
 Two-tables-in-one-chart combines datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
 
+Bankrupt-nor shows the use of a function for converting the time variable from category to date, and the difference of the two in a plot between
+
+Gdp-deteconv shows posting the same query for GDP changes to tables with different frequency, and the use of the function dateconv.
+
 The plan is to post all examples both in Norwegian and in English.

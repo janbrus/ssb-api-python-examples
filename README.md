@@ -6,11 +6,11 @@ Statistics Norway has got three external APIs. The most important one is the [AP
 
 The plan is to give all examples both in Norwegian and in English.
 - The [doi_csv](eks1_doi_csv_nor.ipynb) [in English](eks1_doi_csv1-en.ipynb)examples in this repository are a very basic towards the [API: Readymade datasets](https://data.ssb.no/api/v0/dataset/?lang=en).
+- [kt-csv-nor norsk](kt-csv-nor.ipynb) / [kt-csv-en English](kt-csv-nor.ipynb) import a readymade dataset, Main Economic Forecasts,  as CSV to Pandas, and shows basic plots using Pandas plot and Plotly Express.
+- [Two-tables-in-one-chart Norsk](two-tables-one-chart_nor.ipynb) [Two-tables-in-one-chart English](two-tables-one-chart-en.ipynb) http POST example, makes two datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
 
-Examples, for det time beeing, in Norwegian only
-- [kt-csv-nor](kt-csv-nor.ipynb) import a readymade dataset as CSV to Pandas, and shows basic plots using Pandas plot and Plotly Express.
+Examples, for the time beeing, in Norwegian only
 - [Laks-no](laks-no.ipynb) is a basic example on using http POST to query API:Create your own datasets or [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api).
-- [Two-tables-in-one-chart](two-tables-one-chart_nor.ipynb) combines datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
 - [Konkurs-datokonv-nor](konkurs-datokonv.ipynb) shows the use of a general function for converting the time variable from category to date, and the difference of the two in two plots. The table used is on weekly bankruptcies.
 - [nr-dateconv-nor](nr-datokonv.ipynb) shows posting the same query for GDP changes to tables with different frequency, and the use of the function dateconv which converts fra Categories to dateformat and set a Pandas PeriodIndex.
 

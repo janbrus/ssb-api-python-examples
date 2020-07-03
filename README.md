@@ -11,7 +11,7 @@ The plan is to give all examples both in Norwegian and in English.
 - [Norsk](two-tables-one-chart_nor.ipynb) / [English](two-tables-one-chart-en.ipynb) http POST example, combines two datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
 - [Konkurs-datokonv](konkurs-datokonv.ipynb) / [English](konkurs-datokonv-en.ipynb) shows the use of a general function for converting the time variable from category to date, and the difference of the two in two plots. The table used is on weekly bankruptcies.
 - [nr-dateconv-nor](nr-datokonv.ipynb) / [English](nr-datokonv-en.ipynb) shows posting of the same query for GDP changes to tables with different frequency, and the use of the function dateconv() which converts from Categories to dateformat and set a Pandas PeriodIndex.
-- [text-code](text-code-nor.ipynb)[English](text-code-en.ipynb)shows how to get both text and code from JSON-stat. Example using HS-code from monthly Foreign trade by country.
+- [text-code](text-code-nor.ipynb) / [English](text-code-en.ipynb) shows how to get both text and code from JSON-stat. Example using HS-code from monthly Foreign trade by country.
 
 Example, for the time beeing, in Norwegian only
 - [Laks-no](laks-no.ipynb) is a basic example on using http POST to query API:Create your own datasets or [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api).

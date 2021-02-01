@@ -22,7 +22,7 @@ The plan is to give all examples both in Norwegian and in English.
 
 
 #### Examples on Statistics Norways [Statistical Classifications and Codelists](https://www.ssb.no/en/klass/) API
-- [Klasskommune](klass_kommune2020.ipynb) how to get and filter municipality IDs.
+- [Klasskommune](klass_kommune2020.ipynb) examples on how to get classifications, versions, changes, correspondence tables and variants.
 - [KOSTRA arter og funksjoner](kostra-kode-nor.ipynb) hvordan hente og filtrere KOSTRA arter og funksjoner med definisjoner via Klass API (KOSTRA - Municipality-State-Reporting)
 
 

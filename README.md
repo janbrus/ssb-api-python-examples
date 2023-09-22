@@ -39,9 +39,9 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 - [PxWebApi brukerveiledning](https://www.ssb.no/omssb/_attachment/248256).
 - [Slik bruker du SSBs statistikkbank](https://www.ssb.no/statbank/hvordan-bruke-statistikkbanken).
 
-**R-bruker?** Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html)
+**R-bruker?** Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html)
 
-#English
+# English
 ## Jupyter notebooks on how to use Python to access Statstics Norways APIs
 
 Statistics Norway offers three APIs that allow you to retrieve and integrate SSB's data with your own systems. These APIs are open and do not require registration. Here is a brief overview of the three APIs:
@@ -59,7 +59,7 @@ Statistics Norway offers three APIs that allow you to retrieve and integrate SSB
 ## Examples using http POST to query [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)
 All examples are using JSON-stat output and the library [pyjstat](https://pypi.org/project/pyjstat/) 
 
-- [basic](laks-en.ipynb) - a basic example on using http POST to query API:Create your own datasets or [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api).
+- [basic](laks-en.ipynb) - a basic example on using http POST to query PxWebApi.
 - [jsonstatToPandas_function](jsonstatToPandas_function-en.ipynb) - General function to read JSON-stat to Pandas dataframes
 - [two-tables-one-chart](two-tables-one-chart-en.ipynb) - http POST example, combines two datasets from two Statbank tables using Pandas pivot, and plot them using Matplotlib.
 - [bankrupties](konkurs-datokonv-en.ipynb) - shows the use of a general function for converting the time variable from category to date, and the difference of the two in two plots. The table used is on weekly bankruptcies.

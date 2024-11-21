@@ -10,8 +10,9 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
 ----
 **21.11.2024**: SSB har kommet med en [versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi. Dette håndterer også http GET. Formatet på http POST er nytt. Min plan er etterhvert å lage tilsvarende eksempler som benytter V2. 
+
 Det også litt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
-Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) nylig oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
+
 ----
 
 
@@ -44,7 +45,7 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 - [PxWebApi brukerveiledning](https://www.ssb.no/omssb/_attachment/248256).
 - [Slik bruker du SSBs statistikkbank](https://www.ssb.no/statbank/hvordan-bruke-statistikkbanken).
 
-**R-bruker?** Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html)
+**R-bruker?** Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html) Denne er nylig oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
 
 # English
 ## Jupyter notebooks on how to use Python to access Statstics Norways APIs
@@ -77,6 +78,6 @@ All examples are using JSON-stat output and the library [pyjstat](https://pypi.o
 
 
 
-**Using R ?** Try our R-package [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) and see [Introduction](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html)
+**Using R ?** Try our R-package [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) and see [Introduction](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html). It is newly updated to version 1.0. GET url's from the new APIv2beta is handled here, if you select JSON-stat2 as output format.
 
 

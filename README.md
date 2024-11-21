@@ -8,6 +8,11 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 - **API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbankens.
 - **API med ferdige datasett**: Dette enkle API-et gir deg tilgang til 210 oppdaterte datasett med fast URL, hentet fra de mest brukte tabellene i Statistikkbanken.
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
+----
+**21.11.2024**: SSB har kommet med en [versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi. Dette håndterer også http GET. Formatet på http POST er nytt. Min plan er etterhvert å lage tilsvarende eksempler som benytter V2. 
+Det også litt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
+Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) nylig oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
+----
 
 
 Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).

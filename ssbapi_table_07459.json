@@ -1,0 +1,23 @@
+{"queryObj":{
+  "query": [
+    {
+      "code": "Region",
+      "selection": {
+        "filter": "vs:Landet",
+        "values": [
+          "0"
+        ]
+      }
+    },
+    {
+      "code": "Alder",
+      "selection": {
+        "filter": "vs:AlleAldre00B",
+        "values": []
+      }
+    }
+  ],
+  "response": {
+    "format": "json-stat2"
+  }
+},"tableIdForQuery":"07459","postUrl":"https://data.ssb.no/api/v0/no/table/07459"}

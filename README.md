@@ -13,6 +13,7 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 
 Det også litt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
 
+**8.1.2025** Jeg har laget en foreløpig oversettelse og bearbeiding av [Brukerhåndbok for PxWebApi Beta2](PxWebApi2/beta-bruker.md). Utkastet er basert på SCB sitt utkast til User Guide.
 ----
 
 
@@ -23,7 +24,7 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 - [Konjunkturtendensene](kt-csv-nor.ipynb) - Importerer et ferdig CSV datasett til Pandas, med 10 oppdaterte økonomiske prognoser. Viser enkle diagram med Pandas plot og Plotly Express.
 
 
-## JSON-stat eksempler for å poste spørringer mot [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)  
+## JSON-stat eksempler for å poste spørringer mot [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)
 
 - [Laks](laks-no.ipynb) - Post spørring og få Pandas dataframe i retur
 - [JsonStatToPandas](jsonstatToPandas_funksjon.ipynb) - To funksjoner for å poste JSON spørring og få Pandas dataframe i retur

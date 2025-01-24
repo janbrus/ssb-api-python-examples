@@ -51,7 +51,7 @@ Informasjonen kan lagres i ulike formater og teknologier. Vi støtter for øyebl
 
 # API-endepunkter  
 
-Url-ene i endepunktet er 
+Url-ene i endepunktet er uavhengig av store og små bokstaver.
 
 **POST** er primært ment for å hente data når forespørselen for å velge data kan bli svært stor. I noen tilfeller kan URL-en overskride det maksimale antallet tegn som er tillatt for en URL. I slike tilfeller kan en http **POST-forespørsel** være løsningen. 
 
@@ -619,7 +619,7 @@ Du kan begrense tabellene som returneres ved hjelp av følgende parametere:
 En valgfri språkparameter.
 
 ##### query  
-Velger bare tabeller som samsvarer med et kriterium angitt i søkeparameteren.  
+Velger bare tabeller som samsvarer med et kriterium angitt i søkeparameteren.  Søk er basert på Lucene .Net, og gir mange avanserte søkemuligheter. Se [syntaks for søk](https://lucenenet.apache.org/docs/4.8.0-beta00017/api/queryparser/Lucene.Net.QueryParsers.Classic.html).
 ```
 https://data.ssb.no/api/pxwebapi/v2-beta/tables?query=befolkning
 ```

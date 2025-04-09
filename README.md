@@ -10,7 +10,7 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
 
 
-SSB har kommet med en **[versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er nytt. Se **egen [README](../ssb-api-v2-examples)** for eksempler som benytter V2. 
+SSB har kommet med en **[versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er nytt. Se **egen [README](/blob/master/PxWebApi2/README.md)** for eksempler som benytter V2. 
 
 Det nå litt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
 

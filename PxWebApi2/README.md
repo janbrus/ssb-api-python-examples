@@ -10,3 +10,4 @@ NB! Dette APIet er forstatt under endring.
 
 [beta-bruker](beta-bruker.md) er en foreløpig oversettelse til norsk av en litt mangelfull brukerveiledning
 
+[PxWebApi v2 Beta Open API dokumentasjon - SSB](https://data.ssb.no/api/pxwebapi/v2-beta/index.html)

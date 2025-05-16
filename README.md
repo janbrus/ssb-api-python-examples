@@ -12,7 +12,7 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 
 SSB har kommet med en **[versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er nytt. Se **egen [README](PxWebApi2/README.md)** for eksempler som benytter versjon 2. 
 
-Det nå litt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
+Det kommer fortsatt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
 
 Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) nylig oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
 

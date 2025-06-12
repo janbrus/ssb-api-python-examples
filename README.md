@@ -34,6 +34,7 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 - [Konkurs-datokonv](konkurs-datokonv.ipynb) - Funksjon for å konvertere Tid fra kategori til datoformat. Viser forskjellen i to figurer med ukentlige konkurser.
 - [Nasjonalregnskap-datokonvertering](nr-datokonv.ipynb) - Viser samme spørring mot tabeller med ulik frakvense, her BNP-endring i månedlig, kvartalsvis og årlig nasjonalregnskap. Viser dateconv() som konverterer fra kategori til dataoformat og setter Pandas Period.
 - [text-code](text-code-nor.ipynb) - Få Kode og Tekst i JSON-stat - eksempel med HS-varekoder i månedlig Utenrikshandel
+- [apidata](apidata-no.ipynb) - dapla-statbank-client er laget av SSB og gjør det enkelt å hente JSON-stat2 datasett.
 
 ## Klassifikasjoner og kodelister (Klass)
 - [Klasskommune](klass_kommune2020.ipynb) - Standard for kommuneinndeling  til Pandas.
@@ -74,7 +75,7 @@ All examples are using JSON-stat output and the library [pyjstat](https://pypi.o
 - [bankrupties](konkurs-datokonv-en.ipynb) - shows the use of a general function for converting the time variable from category to date, and the difference of the two in two plots. The table used is on weekly bankruptcies.
 - [gdp-dateconv](nr-datokonv-en.ipynb) - shows posting of the same query for GDP changes to tables with different frequency, and the use of the function dateconv() which converts from Categories to dateformat and set a Pandas PeriodIndex.
 - [text-code](text-code-en.ipynb) - shows how to get both text and code from JSON-stat. Example using HS-code from monthly Foreign trade by country.
-
+- [apidata](apidata-en.ipynb) - dapla-statbank-client is made by Statistics Norway and makes it easier to get JSON-stat2 datasets.
 
 ## Example on Statistics Norway's [Statistical Classifications and Codelists](https://www.ssb.no/en/klass/) API
 - [Klasskommune](klass_kommune2020.ipynb) get municipality names and codes.

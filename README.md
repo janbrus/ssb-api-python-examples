@@ -5,16 +5,16 @@
 
 Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSBs data med egne systemer. API-ene er åpne og krever ikke registrering:
 
-- **API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbankens.
-- **API med ferdige datasett**: Dette enkle API-et gir deg tilgang til 210 oppdaterte datasett med fast URL, hentet fra de mest brukte tabellene i Statistikkbanken.
+- **API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbanken.
+- **API med ferdige datasett**: Dette enkle API-et gir deg tilgang til 200 oppdaterte datasett med fast URL, hentet fra de mest brukte tabellene i Statistikkbanken.
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
 
 
-SSB har kommet med en **[versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er nytt. Se **egen [README](PxWebApi2/README.md)** for eksempler som benytter versjon 2. 
+SSB har kommet med en **[versjon 2 beta](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0-beta) av PxWebApi**. Lansering antakelig etter sommeren 2025. Dette håndterer også http GET. Formatet på http POST er nytt. Se **egen [README](PxWebApi2/README.md)** for eksempler som benytter versjon 2. 
 
-Det kommer fortsatt mer metadata i JSON-stat2. Det gjelder både det gamle og nye APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. 
+Det kommer fortsatt mer metadata i JSON-stat2. Det gjelder både versjon 1 og 2 av APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. Flere oppdateringer vil komme.
 
-Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) nylig oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
+Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) oppdatert til versjon 1.0. Den håndterer også v2-beta GET Url'er.
 
 
 
@@ -57,7 +57,7 @@ Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebAp
 Statistics Norway offers three APIs that allow you to retrieve and integrate SSB's data with your own systems. These APIs are open and do not require registration. Here is a brief overview of the three APIs:
 
 1. **API for posting queries in JSON to all of Statbank Norway's 7000 tables ([PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api))**: This API allows you to send queries in JSON format to all of Statistikkbanken's tables.
-2. **API for ready-made datasets**: This API provides access to 210 datasets with fixed URLs, extracted from the most frequently used tables in the Statbank.
+2. **API for ready-made datasets**: This API provides access to 200 datasets with fixed URLs, extracted from the most frequently used tables in the Statbank.
 3. **REST API for statistical classifications and code lists**: This API provides access to statistical classifications and code lists.
 
 
@@ -82,6 +82,6 @@ All examples are using JSON-stat output and the library [pyjstat](https://pypi.o
 
 
 
-**Using R ?** Try our R-package [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) and see [Introduction](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html)
+**Using R ?** Try our R-package [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) and see [Introduction](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html) which is now in version 1.0.
 
 

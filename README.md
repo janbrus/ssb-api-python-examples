@@ -1,4 +1,6 @@
 # ssb-api-python-examples
+
+<!--- Language: no --->
 ### Norsk - for [English see below](#English)
 
 # Hvordan bruke Python mot SSBs API-er, vist med Jupyter notebooks
@@ -51,6 +53,7 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 **R-bruker?** 
 Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html). Tips: Har du problem med æøå i API setlocale i R til "no_NO.UTF8"
 
+<!--- Language: en --->
 # English
 ## Jupyter notebooks on how to use Python to access Statstics Norways APIs
 

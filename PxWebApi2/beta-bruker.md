@@ -2,26 +2,26 @@
 
 
 # PxWebApi 2.0  
-# Brukerhåndbok for PxWebApi v2 beta - utkast
+# Brukerhåndbok for PxWebApi v2 - mangelfull brukerveiledning - basert på utkast fra SCB
 ## Hva denne håndboken dekker  
 Dette dokumentet spesifiserer forespørslene og responsformatene, samt endepunktene for **PxWebApi 2.0 beta** hos SSB.
 
 ## _NB! Denne er en forløpig oversettelse og bearbeiding_ av  https://github.com/PxTools/PxApiSpecs/blob/master/specs.md
 
-# Konsepter  
+# Konsepter
 **PxWebApi** bruker noen abstraksjoner for å representere ulike deler av den statistiske databasen. Dette avsnittet gir leseren en bedre forståelse av disse abstraksjonene som grunnlag for å forstå strukturen i API-et og dataene som tilbys.
 
-## Tabell  
+## Tabell
 En **tabell** er representasjonen av en statistisk tabell. Andre kan referere til det samme konseptet som et _datasett_, _kube_ eller _flerdimensjonal kube_. Vi har valgt å kalle det en **tabell** av historiske grunner. En tabell består av to deler: dataene som inneholder tallene, og metadataene som gir dataene kontekst eller mening. F.eks. data `5 550 203` og metadataene "befolkningen i Norge 1. januar 2024."
 
-## Database  
+## Database
 En **database** er en samling av tabeller som er organisert og strukturert i henhold til et skjema. En vanlig feil er å blande konseptet database med et relasjonsdatabasesystem som **Oracle Database** eller **Microsoft SQL Server**. Av og til refererer "database" også til en instans av databasen.
 
-## Mappe  
+## Mappe
 **Mapper** (Folder) brukes til å organisere tabeller i en database. En mappe kan inneholde andre mapper eller tabeller. Vanligvis refererer det første nivået med mapper i en database til de tematiske områdene i databasen. Andre kan også kalle dem "temaer" eller "emner".
 
 
-## Variabel  
+## Variabel
 Tabeller er flerdimensjonale, og **variabler** er konseptet som brukes til å beskrive dataene. Mange kan referere til variabler som _dimensjoner_. Ta eksempelet med dataene `5 550 203` og metadataene "befolkningen i i Norge 1. januar 2024". `5 550 203` beskrives av tre variabler:  
 1. Hva vi måler. I vårt tilfelle er dette befolkningen. Denne variabelen er spesiell og refereres til som **statistikkvariabel**. Andre kan benevne denne som _målevariabel_ eller _innholdsvariabel_. 
 2. Tidspunktet tallet er assosiert med. I vårt tilfelle er det 31. desember 2021. Denne typen variabel er også spesiell og refereres til som **tidsvariabel**. Det skal alltid være én og kun én tidsvariabel.  
@@ -29,19 +29,19 @@ Tabeller er flerdimensjonale, og **variabler** er konseptet som brukes til å be
 
 Det finnes en fjerde type variabel, bare kalt **variabel**. Den brukes til å beskrive dataene. Tenk deg at vi hadde delt `5 550 203` etter kjønn slik at vi hadde to dataceller i stedet, `2 795 718` og `2 754 485`, én for menn og én for kvinner. Da ville den fjerde variabelen være kjønn.
 
-## Verdi  
+## Verdi
 Variabler har distinkte verdier som utgjør rommet for dem. F.eks. har vår kjønnsvariabel ovenfor to verdier: én for menn og én for kvinner.
 
-## Kodeliste  
+## Kodeliste
 En variabel kan ha en tilknyttet **kodeliste** som definerer et nytt rom for variabelen ved å tilby forskjellige sett med verdier. F.eks. forestill deg at du har en regional variabel med verdier for hver kommune i Norge. Da kan du ha en kodeliste som transformerer kommunene til fylker.
 
-## Datacelle  
+## Datacelle
 En datacelle er den individuelle målingen i en tabell. Det totale antallet celler for en tabell gis av produktet av antall verdier for hver variabel.
 
-## Datakildetype  
+## Datakildetype
 Informasjonen kan lagres i ulike formater og teknologier. Vi støtter for øyeblikket to forskjellige datakildetyper: **PX-filbaserte** og **Oracle-databaser** samt **Microsoft SQL Server**, som bruker **Common Nordic Meta Model**.
 
-## Annen terminologi  
+## Annen terminologi
 - **Paxiom**: Objektmodellen som representerer en tabell.  
 - **CNMM**: Common Nordic Meta Model er en relasjonsdatamodell for å representere en `database` og `tabeller`. Den brukes og vedlikeholdes av Statistikkbyråene i Sverige, Norge og Danmark.  
 - **PX-fil**: En fysisk representasjon av en tabell ved bruk av [PX-filformatet](https://www.scb.se/en/services/statistical-programs-for-px-files/px-file-format/).  
@@ -49,82 +49,68 @@ Informasjonen kan lagres i ulike formater og teknologier. Vi støtter for øyebl
 
 
 
-# API-endepunkter  
+# API-endepunkter
 
 Url-ene i endepunktet er uavhengig av store og små bokstaver.
 
 **POST** er primært ment for å hente data når forespørselen for å velge data kan bli svært stor. I noen tilfeller kan URL-en overskride det maksimale antallet tegn som er tillatt for en URL. I slike tilfeller kan en http **POST-forespørsel** være løsningen. 
 
-## Konfigurasjonsendepunkt  
+## Konfigurasjonsendepunkt
 Hent API-konfigurasjonsinnstillinger. Instanser av API-et kan være konfigurert forskjellig fra hverandre. Klienter kan bruke dette endepunktet for å hente informasjon som kan være nyttig for å styre oppførselen til klienten.  
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/config
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/config
 ```
 
-### Eksempel på respons  
+### Eksempel på respons
 ```json
 {
-  "apiVersion": "2.0.0-beta.3",
-  "appVersion": "0.0.1-alpha.2+default.selection.fix.build.7",
+  "apiVersion": "2.0.0",
+  "appVersion": "2.0.1+build.10",
   "languages": [
     {
-      "id": "en",
-      "label": "English"
+    "id": "no",
+    "label": "Norsk"
     },
     {
-      "id": "no",
-      "label": "Norsk"
+    "id": "en",
+    "label": "English"
     }
-  ],
+    ],
   "defaultLanguage": "no",
   "maxDataCells": 800000,
   "maxCallsPerTimeWindow": 30,
-  "timeWindow": 10,
-  "license": "https://creativecommons.org/share-your-work/public-domain/cc0/",
+  "timeWindow": 60,
+  "license": "https://www.ssb.no/en/diverse/lisens",
   "sourceReferences": [
     {
-      "language": "en",
-      "text": "Source: Statistics Norway"
+    "language": "en",
+    "text": "Source: Statistics Norway"
     },
     {
-      "language": "no",
-      "text": "Kilde: Statistisk sentralbyrå"
+    "language": "no",
+    "text": "Kilde: Statistisk sentralbyrå"
     }
-  ],
-  "defaultMetadataFormat": 0,
+    ],
   "defaultDataFormat": "json-stat2",
   "dataFormats": [
-    "xlsx",
-    "xlsx_doublecolumn",
-    "csv",
-    "csv_tab",
-    "csv_tabhead",
-    "csv_comma",
-    "csv_commahead",
-    "csv_space",
-    "csv_spacehead",
-    "csv_semicolon",
-    "csv_semicolonhead",
-    "csv2",
-    "csv3",
-    "json",
-    "json-stat",
     "json-stat2",
-    "parquet",
-    "html5_table",
-    "relational_table",
-    "px"
-  ],
+    "csv",
+    "px",
+    "xlsx",
+    "html",
+    "json-px",
+    "parquet"
+    ],
   "features": [
     {
-      "id": "CORS",
-      "params": [
-        {
-          "key": "enabled",
-          "value": "True"
-        }
+    "id": "CORS",
+    "params": [
+      {
+      "key": "enabled",
+      "value": "True"
+      }
       ]
-    }
+  }
   ]
 }
 ```
@@ -139,22 +125,22 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/config
 - **license** spesifiserer lisensen for dataene.  
 
 
-## Navigasjonsendepunkter  
+## Navigasjonsendepunkter
 
 Bla gjennom databasestrukturen.
 
-### Returnerer rotmappen for databasen  
+### Returnerer rotmappen for databasen
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/navigation
 ```
 
 #### Parametere  
 ##### lang  
 En valgfri språkparameter.
 
-#### Eksempel på respons  
+#### Eksempel på respons
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/navigation?lang=en
 ```
 
 ```json
@@ -173,7 +159,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/al?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/al?lang=en"
         }
       ]
     },
@@ -186,7 +172,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/bf?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/bf?lang=en"
         }
       ]
     },
@@ -199,7 +185,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/vf?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/vf?lang=en"
         }
       ]
     },
@@ -212,7 +198,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/be?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/be?lang=en"
         }
       ]
     },
@@ -225,7 +211,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/bb?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/bb?lang=en"
         }
       ]
     },
@@ -238,7 +224,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/ei?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/ei?lang=en"
         }
       ]
     },
@@ -251,7 +237,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/he?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/he?lang=en"
         }
       ]
     },
@@ -264,7 +250,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/if?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/if?lang=en"
         }
       ]
     },
@@ -277,7 +263,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/in?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/in?lang=en"
         }
       ]
     },
@@ -290,7 +276,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/js?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/js?lang=en"
         }
       ]
     },
@@ -303,7 +289,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/kf?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/kf?lang=en"
         }
       ]
     },
@@ -316,7 +302,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/nk?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/nk?lang=en"
         }
       ]
     },
@@ -329,7 +315,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/nm?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/nm?lang=en"
         }
       ]
     },
@@ -342,7 +328,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/os?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/os?lang=en"
         }
       ]
     },
@@ -355,7 +341,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/pp?lang=en"
         }
       ]
     },
@@ -368,7 +354,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/sk?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/sk?lang=en"
         }
       ]
     },
@@ -381,7 +367,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/sv?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/sv?lang=en"
         }
       ]
     },
@@ -394,7 +380,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/ti?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/ti?lang=en"
         }
       ]
     },
@@ -407,7 +393,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/tr?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/tr?lang=en"
         }
       ]
     },
@@ -420,7 +406,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/ud?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/ud?lang=en"
         }
       ]
     },
@@ -433,7 +419,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/ut?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/ut?lang=en"
         }
       ]
     },
@@ -446,7 +432,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/va?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/va?lang=en"
         }
       ]
     },
@@ -459,7 +445,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
         {
           "rel": "self",
           "hreflang": "en",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/vt?lang=en"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/vt?lang=en"
         }
       ]
     }
@@ -468,15 +454,15 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation?lang=en
     {
       "rel": "self",
       "hreflang": "en",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/?lang=en"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/?lang=en"
     }
   ]
 }
 ```
 
-### Returner innholdet i en spesifikk mappe i databasen  
+### Returner innholdet i en spesifikk mappe i databasen
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/navigation/{id}
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/navigation/{id}
 ```  
 
 Returnerer databasemappen identifisert av **id**.  
@@ -485,8 +471,8 @@ Returnerer databasemappen identifisert av **id**.
 ##### lang  
 En valgfri språkparameter.
 
-#### Eksempel på respons  
-Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp`. Metadata om mappen **pp** returneres sammen med innholdet i mappen **Priser og prisindekser**.
+#### Eksempel på respons
+Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api/pxwebapi/v2/navigation/pp`. Metadata om mappen **pp** returneres sammen med innholdet i mappen **Priser og prisindekser**.
 
 ```json
 {
@@ -504,7 +490,7 @@ Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp01?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/pp01?lang=no"
         }
       ]
     },
@@ -517,7 +503,7 @@ Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp02?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/pp02?lang=no"
         }
       ]
     },
@@ -530,7 +516,7 @@ Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp04?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/pp04?lang=no"
         }
       ]
     },
@@ -543,7 +529,7 @@ Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/pp05?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/pp05?lang=no"
         }
       ]
     }
@@ -552,7 +538,7 @@ Dette eksempelet viser responsen fra API-forespørselen `https://data.ssb.no/api
     {
       "rel": "self",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/navigation/PP?lang=no"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/navigation/PP?lang=no"
     }
   ]
 }
@@ -603,43 +589,43 @@ Det er tre mulige verdier for **objectType**:
   	- **data** – Hvordan navigere til tabellens data.  
 
 
-## Tabellendepunkter  
+## Tabellendepunkter
 
-### Liste over alle tabeller  
+### Liste over alle tabeller
 Viser alle tabeller i databasen. Listen kan filtreres ved hjelp av forskjellige parametere.  
 
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/tables/
 ```
 
-#### Parametere  
+#### Parametere
 Du kan begrense tabellene som returneres ved hjelp av følgende parametere:
 
-##### lang  
+##### lang
 En valgfri språkparameter.
 
-##### query  
+##### query
 Velger bare tabeller som samsvarer med et kriterium angitt i søkeparameteren.  Søk er basert på Lucene .Net, og gir mange avanserte søkemuligheter. Se [syntaks for søk](https://lucenenet.apache.org/docs/4.8.0-beta00017/api/queryparser/Lucene.Net.QueryParsers.Classic.html).
 ```
-https://data.ssb.no/api/pxwebapi/v2-beta/tables?query=befolkning
+https://data.ssb.no/api/pxwebapi/v2/tables?query=befolkning
 ```
 
-##### pastDays  
+##### pastDays
 Velger bare tabeller som er oppdatert et visst antall dager før forespørselens tidspunkt. Gyldige verdier for **pastDays** er heltall mellom 1 og ?. *(vil returnere feil hvis ukjent verdi)*.  
 ```
-https://data.ssb.no/api/pxwebapi/v2-beta/tables?pastDays=5
+https://data.ssb.no/api/pxwebapi/v2/tables?pastDays=5
 ```
 
-##### includeDiscontinued  
+##### includeDiscontinued
 `true` eller `false`, avhengig av om utgåtte tabeller skal inkluderes. Tabeller som ikke eksplisitt har satt egenskapen **discontinued**, behandles som om de ikke er utgått.  
 
-##### pageSize  
+##### pageSize
 Hvor mange treff eller tabeller som skal inkluderes på en side av responsen.
 
-##### pageNumber  
+##### pageNumber
 Et tall som spesifiserer hvilken side av responsen som skal vises. Standardverdien er 1.
 
-#### Eksempel på respons  
+#### Eksempel på respons
 Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 3:  
 ```json
 {
@@ -663,22 +649,22 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/12631?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/12631?lang=no"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/12631/metadata?lang=no&outputFormat=json-px"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/12631/metadata?lang=no&outputFormat=json-px"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/12631/metadata?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/12631/metadata?lang=no&outputFormat=json-stat2"
         },
         {
           "rel": "data",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/12631/data?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/12631/data?lang=no&outputFormat=json-stat2"
         }
       ]
     },
@@ -702,22 +688,22 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/13760?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/13760?lang=no"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/13760/metadata?lang=no&outputFormat=json-px"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/13760/metadata?lang=no&outputFormat=json-px"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/13760/metadata?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/13760/metadata?lang=no&outputFormat=json-stat2"
         },
         {
           "rel": "data",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/13760/data?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/13760/data?lang=no&outputFormat=json-stat2"
         }
       ]
     },
@@ -738,22 +724,22 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
         {
           "rel": "self",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/05803?lang=no"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/05803?lang=no"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/05803/metadata?lang=no&outputFormat=json-px"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/05803/metadata?lang=no&outputFormat=json-px"
         },
         {
           "rel": "metadata",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/05803/metadata?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/05803/metadata?lang=no&outputFormat=json-stat2"
         },
         {
           "rel": "data",
           "hreflang": "no",
-          "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/05803/data?lang=no&outputFormat=json-stat2"
+          "href": "https://data.ssb.no/api/pxwebapi/v2/tables/05803/data?lang=no&outputFormat=json-stat2"
         }
       ]
     }
@@ -767,17 +753,17 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
       {
         "rel": "next",
         "hreflang": "no",
-        "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=3"
+        "href": "https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=3"
       },
       {
         "rel": "previous",
         "hreflang": "no",
-        "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=1"
+        "href": "https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=1"
       },
       {
         "rel": "last",
         "hreflang": "no",
-        "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=121"
+        "href": "https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=121"
       }
     ]
   },
@@ -785,7 +771,7 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
     {
       "rel": "self",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=2"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/tables/?lang=no&query=befolkning&pagesize=3&pageNumber=2"
     }
   ]
 }
@@ -804,16 +790,16 @@ Et eksempel som filtrerer på "befolkning" til side 2 med en sidestørrelse på 
 **Merk**  
 Informasjonen kan være hurtigbufret for å forbedre ytelsen. Dette kan føre til forsinkelser i responsen rett etter publisering av nye data.
 
-### Liste grunnleggende informasjon for en tabell  
+### Liste grunnleggende informasjon for en tabell
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/<table-id>
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/tables/<table-id>
 ```
 
 #### Parametere  
 ##### lang  
 En valgfri språkparameter.
 
-#### Eksempel på respons  
+#### Eksempel på respons
 Et eksempel som returnerer grunnleggende informasjon for tabellen **03013**:  
 ```json
 {
@@ -835,22 +821,22 @@ Et eksempel som returnerer grunnleggende informasjon for tabellen **03013**:
     {
       "rel": "self",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/03013?lang=no"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/tables/03013?lang=no"
     },
     {
       "rel": "metadata",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/03013/metadata?lang=no&outputFormat=json-px"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/tables/03013/metadata?lang=no&outputFormat=json-px"
     },
     {
       "rel": "metadata",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/03013/metadata?lang=no&outputFormat=json-stat2"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/tables/03013/metadata?lang=no&outputFormat=json-stat2"
     },
     {
       "rel": "data",
       "hreflang": "no",
-      "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/03013/data?lang=no&outputFormat=json-stat2"
+      "href": "https://data.ssb.no/api/pxwebapi/v2/tables/03013/data?lang=no&outputFormat=json-stat2"
     }
   ],
   "language": "no"
@@ -860,34 +846,34 @@ Et eksempel som returnerer grunnleggende informasjon for tabellen **03013**:
 **Merk**  
 Informasjonen kan være hurtigbufret for å forbedre ytelsen, noe som kan føre til korte forsinkelser i responsen rett etter publisering av nye data.
 
-### Liste metadata for en tabell  
+### Liste metadata for en tabell
 Vis metadata for en spesifisert tabell.  
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/<table-id>/metadata
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/tables/<table-id>/metadata
 ```
 
 #### Parametere  
 ##### lang  
 En valgfri språkparameter.
 
-##### outputFormat  
+##### outputFormat
 Ett av følgende formater: `json-px` eller `json-stat2`. Standardverdi vil bli spesifisert av konfigurasjonsendepunktet.
 
-#### Eksempel på respons  
+#### Eksempel på respons
 Metadata for tabell med id **11118** som json-stat2
 
 ```json
 {
   "version": "2.0",
   "class": "dataset",
-  "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/11118/metadata?lang=no&outputFormat=json-stat2",
+  "href": "https://data.ssb.no/api/pxwebapi/v2/tables/11118/metadata?lang=no&outputFormat=json-stat2",
   "label": "11118: Konsumprisindeks for varer og tjenester, etter Leveringssektor, statistikkvariabel og år",
   "source": "Statistisk sentralbyrå",
   "updated": "2024-01-10T07:00:00Z",
   "link": {
     "data": [
       {
-        "href": "https://data.ssb.no/api/pxwebapi/v2-beta/tables/11118/data?lang=no&outputFormat=json-stat2"
+        "href": "https://data.ssb.no/api/pxwebapi/v2/tables/11118/data?lang=no&outputFormat=json-stat2"
       }
     ]
   },
@@ -1062,20 +1048,20 @@ Metadata for tabell med id **11118** som json-stat2
 }
 ```
 
-### Hent data for en spesifikk tabell  
+### Hent data for en spesifikk tabell
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/<table-id>/data/
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/tables/<table-id>/data/
 ```
 
-#### Parametere  
+#### Parametere
 Variablene i tabellen kan brukes til å forespørre en spesifikk del av tabellen ved hjelp av følgende parametere. Hvis ingen parametere er angitt, velges et standardområde i tabellen.  
 
-#### Eksempel på respons  
+#### Eksempel på respons
 
 Data uten andre parametere enn språk og outputFormat for tabell med id **11118** som json-stat2
 
 ```
-HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/11118/data?lang=no&outputformat=json-stat2
+HTTP GET https://data.ssb.no/api/pxwebapi/v2/tables/11118/data?lang=no&outputformat=json-stat2
 ```
 
 ```json
@@ -1267,17 +1253,17 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2-beta/tables/11118/data?lang=no&outp
 }
 ```
 
-##### lang  
+##### lang
 En valgfri språkparameter.
 
-##### valueCodes  
+##### valueCodes
 Et utvalg som spesifiserer et område i tabellen som skal returneres. Alle variabler som ikke kan elimineres, må ha et utvalg spesifisert. Utvalget for en variabel gis i følgende form:  
 ```
 valueCodes[VARIABLE-CODE]=ITEM-SELECTION-1,ITEM-SELECTION-2,ITEM-SELECTION-3, etc
 ```  
 der `VARIABLE-CODE` er koden for variabelen, og `ITEM-SELECTION-X` er enten en verdikode eller et utvalguttrykk. Hvis verdikoden inneholder komma, må den være i hakeparenteser, f.eks. `[RANGE(1,12)]`.  
 
-##### codelist  
+##### codelist
 En annen kodeliste kan spesifiseres for en variabel, f.eks. for å bruke en annen aggregering. Kodelisten spesifiseres slik:  
 ```
 codelist[VARIABLE-CODE]=CODELIST-ID
@@ -1288,14 +1274,14 @@ Hvor `VARIABLE-CODE` er koden for variabelen, og `CODELIST-ID` er ID-en til kode
 ## POST-endepunktet for tabelldata
 
 
-### Hent data for en spesifikk tabell (POST-metode)  
+### Hent data for en spesifikk tabell (POST-metode)
 Dette endepunktet ligner på GET-metoden, men utvalgsuttrykkene sendes i selve forespørselens kropp som et JSON-objekt.  
 
 ```
-HTTP POST https://data.ssb.no/api/pxwebapi/v2-beta/tables/<table-id>/data?<outputFormat>
+HTTP POST https://data.ssb.no/api/pxwebapi/v2/tables/<table-id>/data?<outputFormat>
 ```
 
-#### Utvalgsuttrykk  
+#### Utvalgsuttrykk
 JSON-objektet som spesifiserer forespørselen, gis i følgende form:  
 ```json
 # POST API spørring  - fryst og fersk laks siste 53 uker
@@ -1317,20 +1303,20 @@ payload = {"selection": [
 
 ```
 
-#### Parametere  
+#### Parametere
 
-##### lang  
+##### lang
 En valgfri språkparameter. Angis i endepunkt.
 
-##### outputFormat  
+##### outputFormat
 Angis i endepunktet. Formatet resultatet skal være i. Standardverdien er spesifisert av konfigurasjonsendepunktet. Se også konfigurasjonsendepunktet for tilgjengelige formater. 
 
 Merk at til forskjell fra API-versjon 1, så angis nå outputformat og evt. språk i endepunktsurl.
 
-### Utvalgsuttrykk  
+### Utvalgsuttrykk
 I stedet for å spesifisere alle verdikoder, kan man bruke et utvalgsuttrykk. Følgende utvalgsuttrykk er tilgjengelige:
 
-#### Jokertegnuttrykk  
+#### Jokertegnuttrykk
 Et jokertegn kan brukes for å matche alle koder. For eksempel:  
 - `*01` matcher alle koder som slutter med `01`.  
 - `*2*` matcher alle koder som inneholder `2`.  
@@ -1340,38 +1326,38 @@ Et jokertegn kan brukes for å matche alle koder. For eksempel:
 
 Maksimalt to jokertegn kan brukes.
 
-#### Nøyaktig samsvar  
+#### Nøyaktig samsvar
 Et spørsmålstegn (`?`) kan brukes til å matche nøyaktig ett tegn. For eksempel:  
 - `?` matcher nøyaktig ett tegn.  
 - `????M12` matcher fire tegn og som slutter med `M12`, f.eks. `2024M12`.
 
-#### TOP  
+#### TOP
 Uttrykket `TOP(N, Offset)` velger de første `N` verdiene med et forskyvning på `Offset`. For eksempel:  
 - `TOP(5)` vil velge de første fem verdiene.  
 - `TOP(5,3)` vil velge den tredje til den åttende verdien.  
 Offset er som standard `0` og trenger ikke spesifiseres. Merk at for tidsvariabelen vil de nyeste verdiene komme først.
 
-#### BOTTOM  
+#### BOTTOM
 `BOTTOM` fungerer på samme måte som `TOP`, men velger verdier fra bunnen av verdilisten.
 
-#### RANGE  
+#### RANGE
 `RANGE(X,Y)` velger alle verdier mellom verdikodene `X` og `Y`, inkludert `X` og `Y`.
 
-#### FROM  
+#### FROM
 `FROM(X)` velger alle verdikoder fra og med `X` og nedover, inkludert `X`.
 
-#### TO  
+#### TO
 `TO(X)` velger alle verdikoder fra starten av listen opp til og med `X`.
 
 ---
 
-### Eliminasjon  
+### Eliminasjon
 Hvis eliminering er satt til `true`, kan variabelen elimineres. Da er det er ikke nødvendig å spesifisere noe utvalg for denne variabelen. Resultatet vil da ikke inneholde denne variabelen. Hvis variabelen har en verdi som angir at den er eliminasjonsverdi, vil denne verdien bli valgt for å eliminere variabelen. Hvis det ikke er spesifisert eliminasjonsverdi, vil variabelen elimineres ved å summere opp alle datapunkter for alle verdier av den variabelen. Hvis en variabel har eliminering satt til `false`, må minst én verdi velges for den variabelen.
 
 
-### Kodeliste-endepunkter  
+### Kodeliste-endepunkter
 
-#### Liste over kodelister for en tabell  
+#### Liste over kodelister for en tabell
 Gir informasjon om en spesifikk kodeliste.  
 
 ```
@@ -1382,15 +1368,15 @@ HTTP GET /api/v2/codelists/<codelist-id>
 ###### lang  
 En valgfri språkparameter.
 
-#### Eksempel på respons  
+#### Eksempel på respons
 Et eksempel på respons for kodelisten **agg_FylkerGjeldende**:  
 ```json
-ikke implementert i v2-beta
+ikke implementert i v2
 ```
 
 
 
-# Responskoder  
+# Responskoder
 - **400** - Feil i spørring
 - **403** - Forbidden
 - **404** – Ressurs ikke funnet.  
@@ -1406,7 +1392,7 @@ ikke implementert i v2-beta
     | 429            | Too many requests | For mange forspørsler innen tidsperioden |
     | 50X            | Internal Server Error | Tjenesten kan være nede |
 
-# Restriksjoner  
+# Restriksjoner
 
 Noen begrensninger i versjon 2.0 av API-et sammenlignet med den første versjonen av API-et:  
 
@@ -1421,7 +1407,7 @@ Noen begrensninger i versjon 2.0 av API-et sammenlignet med den første versjone
 
 - **Tid er ikke lenger eliminerbar** - Det må nå alltid velges en verdi for tidsvariabelen. 
 
-## Referanser  
+## Referanser
 - [https://www.dst.dk/en/Statistik/statistikbanken/api](https://www.dst.dk/en/Statistik/statistikbanken/api)  
 - [http://api.statbank.dk/console#data](http://api.statbank.dk/console#data)  
 - [https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api](https://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api)

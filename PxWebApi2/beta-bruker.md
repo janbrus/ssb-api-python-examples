@@ -6,7 +6,7 @@
 ## Hva denne håndboken dekker  
 Dette dokumentet spesifiserer forespørslene og responsformatene, samt endepunktene for **PxWebApi 2.0 beta** hos SSB.
 
-## _NB! Denne er en forløpig oversettelse og bearbeiding_ av  https://github.com/PxTools/PxApiSpecs/blob/master/specs.md
+## _NB! Denne er en forløpig oversettelse og bearbeiding_ av  https://github.com/PxTools/PxApiSpecs/blob/master/archive/specs.md . Kan benyttes i tilleg til SSBs brukerveiledning.
 
 # Konsepter
 **PxWebApi** bruker noen abstraksjoner for å representere ulike deler av den statistiske databasen. Dette avsnittet gir leseren en bedre forståelse av disse abstraksjonene som grunnlag for å forstå strukturen i API-et og dataene som tilbys.
@@ -125,7 +125,7 @@ HTTP GET https://data.ssb.no/api/pxwebapi/v2/config
 - **license** spesifiserer lisensen for dataene.  
 
 
-## Navigasjonsendepunkter
+## Navigasjonsendepunkter - NB! foreløpig ikke implementert i V2
 
 Bla gjennom databasestrukturen.
 

@@ -1,7 +1,7 @@
 # ssb-api-python-examples
 
 <!--- Language: no --->
-### Norsk - for [English see below](#English)
+### Norsk - for [English see below](#english)
 
 # Hvordan bruke Python mot SSBs API-er, vist med Jupyter notebooks
 
@@ -12,7 +12,7 @@ Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSB
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
 
 
-SSB har kommet med en **[versjon 2](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er endret. Se **egen [README](PxWebApi2/README.md)** for eksempler som benytter versjon 2. 
+SSB kom i oktober med en **[versjon 2](https://www.ssb.no/api/pxwebapi/pxwebapi-2.0) av PxWebApi**. Dette håndterer også http GET. Formatet på http POST er endret. Se **egen [README](PxWebApi2/README.md)** for eksempler som benytter versjon 2. 
 
 Det kommer fortsatt mer metadata i JSON-stat2. Det gjelder både versjon 1 og 2 av APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. Flere oppdateringer vil komme.
 
@@ -64,6 +64,7 @@ Statistics Norway offers three APIs that allow you to retrieve and integrate SSB
 2. **API for ready-made datasets**: This API provides access to 200 datasets with fixed URLs. This API will be discontinued.
 3. **REST API for statistical classifications and code lists**: This API provides access to statistical classifications and code lists.
 
+In October 2025 Statistics Norway released a version 2 of the PxWebApi. This API supports http GET URLs.
 
 ## Examples using CSV from the [API for Readymade datasets](https://data.ssb.no/api/v0/dataset/?lang=en)
 

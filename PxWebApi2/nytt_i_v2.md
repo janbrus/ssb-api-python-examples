@@ -1,11 +1,9 @@
-
-
-# Nyheter i PxWebApi versjon 2
+# Nytt i PxWebApi versjon 2
 
 ## Viktigste nyhet: GET URL-støtte
-Innføringen av GET URL-støtte, gjør API-et enklere å integrere.
+Innføringen av GET URL-støtte. Det gjør API-et enklere å integrere.
 
-**Merk:** Versjon 2 er ikke bakoverkompatibel med versjon 1, og det er også nytt format for HTTP POST.
+**Merk:** Versjon 2 er ikke bakoverkompatibel med versjon 1, og det er også nytt format for bruk av HTTP POST. 
 
 ---
 
@@ -22,10 +20,10 @@ Du kan nå maskere enkeltegn med `?`, i tillegg til eksisterende `*` for flere t
 
 ---
 
-## Enklere datauthenting
+## Mer fleksibrel henting av data
 
 - Hent forhåndsdefinerte datasett uten å spesifisere parametere
-- Flere metadata i JSON-stat2, bl.a. fotnoter(gjelder også versjon 1)
+- Flere metadata i JSON-stat2, bl.a. fotnoter (gjelder også versjon 1)
 - Metadata i API vises nå som JSON-stat2 
 - Kodelister i metadata. Tilgjengelig via `Codelists` (kan gi komplekse URL-er)
 
@@ -63,12 +61,6 @@ stub=VareGrupper2,Tid
 
 ---
 
-## Andre endringer
-
-- **HTML-format oppdatert**
-- **JSON-stat versjon 1 er fjernet**
-
----
 
 ## Kjente begrensninger
 
@@ -77,11 +69,11 @@ URL-er generert i Statistikkbanken er statiske og inkluderer ikke automatisk fre
 - Uoversiktlige og vanskelige å vedlikeholde
 - Nødvendig å redigere manuelt for å få oppdaterte tall
 
-**Løsning:** Jeg har laget et optimeringsverktøy: https://nesa.no/ssb/forenkle_url.html
+Jeg har laget et optimeringsverktøy: https://nesa.no/ssb/forenkle_url.html
 
-### 2. URL-lengdebegrensninger
+### 2. URL begrensning på lengde
 - Maksimal lengde: ~2000 tegn
-- Spesielt problematisk for korttidsstatistikker med lange tidsserier. For månedsstatstikk går grensen litt før Finanskrisen.
+- Spesielt problematisk for korttidsstatistikker med lange tidsserier. For månedsstatistikk går grensen litt før Finanskrisen.
 
 
 ---

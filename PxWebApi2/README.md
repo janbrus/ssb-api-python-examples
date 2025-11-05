@@ -21,8 +21,8 @@
 
 ## In English
 
-[eks1_doi_csv_en](eks1_doi_csv_en.ipynb) how to get a simple dataset, index of retail sales, using the new parameters in http GET
+[eks1_doi_csv_eng](eks1_doi_csv_eng.ipynb) how to get a simple dataset, Index of Retail Sales, using the new parameters in http GET
 
-[laks_v2_en](laks_en.ipynb) shows how to get a datasett as JSON-stat2, using both http GET and POST.
+[laks_v2_eng](laks_eng.ipynb) shows how to get a datasett as JSON-stat2, using both http GET and POST.
 
-[text-code-en](text-code-api2-en.ipynb) - Get both code and taxt in JSON-stat2 and Pandas - example with HS codes for goods from monthly foreign trade statistics
+[text-code-eng](text-code-api2-eng.ipynb) - Get both code and taxt in JSON-stat2 and Pandas - example with HS codes for goods from monthly foreign trade statistics

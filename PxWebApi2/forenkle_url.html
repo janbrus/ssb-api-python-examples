@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSB API2 URL med dynamisk tid</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 10px;
+            margin: 10px 0;
+            font-family: Cascadia code, monospace;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Endre SSB API V2 URL til dynamisk tid</h1>
+    <p>En svakhet i PxWebApi versjon 2 er at den foreslåtte URL'en ikke er dynamisk på tid. Den får da ikke med med nyere tidsperioder. Dette er ofte hensikten med med å bruke API mot Statsikkbanken.</p>
+    <p>Lim inn en URL og få en rettet og mye kortere URL tilbake. Funksjonen erstatter opplistingen av den enkelte tidsperiode med:</p>
+    <ul>
+        <li><strong>Mange perioder (>2):</strong> Bruker <code>from()</code></li>
+        <li><strong>Få perioder (1-2):</strong> Bruker <code>top()</code></li>
+    </ul>
+
+    <label for="input">Original URL:</label>
+    <textarea id="input" placeholder="Lim inn URL her f.eks.:
+
+     https://data.ssb.no/api/pxwebapi/v2/tables/03013/data?lang=no&valueCodes[Tid]=2024M2025M07,2025M08,2025M09&valueCodes[ContentsCode]=KpiIndMnd,Manedsendring,Tolvmanedersendring&codelist[Konsumgrp]=vs_CoiCop2016niva1"></textarea>
+    
+    <button onclick="optimizeUrl()">Optimaliser</button>
+    
+    <div id="result" class="result" style="display: none;">
+        <label>URL med dynamisk tid:</label>
+        <textarea id="output" readonly></textarea>
+    </div>
+
+    <script>
+        /**
+         * Erstatter tidsperiode i URL med enten from() eller top() utfra antall perioder.
+         */
+        function optimizeTimePeriods(url) {
+            const pattern = /\[Tid\]=([\d\w,]+)&/g;
+            
+            return url.replace(pattern, (match, periodsStr) => {
+                const periods = periodsStr.split(',');
+                const numPeriods = periods.length;
+                const firstPeriod = periods[0];
+                
+                if (numPeriods > 2) {
+                    return `[Tid]=from(${firstPeriod})&`;
+                } else {
+                    return `[Tid]=top(${numPeriods})&`;
+                }
+            });
+        }
+
+        function optimizeUrl() {
+            const input = document.getElementById('input').value.trim();
+            
+            if (!input) {
+                alert('Du må lime inn en URL');
+                return;
+            }
+            
+            const optimized = optimizeTimePeriods(input);
+            
+            document.getElementById('output').value = optimized;
+            document.getElementById('result').style.display = 'block';
+        }
+
+        // Tillat Enter-tast for å kjøre optimalisering
+        document.getElementById('input').addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.key === 'Enter') {
+                optimizeUrl();
+            }
+        });
+    </script>
+</body>
+</html>

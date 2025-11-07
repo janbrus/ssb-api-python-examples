@@ -9,8 +9,8 @@ Innføringen av GET URL-støtte. Det gjør API-et enklere å integrere.
 
 ## Forbedrede filtre og søkemuligheter
 
-**Bedre wildcards:**
-Du kan nå maskere enkeltegn med `?`, i tillegg til eksisterende `*` for flere tegn.
+**Bedre maskeringstegn:**
+Du kan nå maskere ett og ett tegn med `?`, i tillegg til det eksisterende `*` for flere tegn.
 
 **Nye filtre:** 
 - `from()` – hent data fra og med et startpunkt
@@ -29,11 +29,9 @@ Du kan nå maskere enkeltegn med `?`, i tillegg til eksisterende `*` for flere t
 
 ---
 
-## Layout-styring for CSV, XLSX og HTML
+## Layout styring for CSV, XLSX og HTML
 
-HTML format er nytt.
-
-**Nye parametere gir full kontroll:**
+**Nye parametere gir full kontroll og fleksibilitet:**
 
 **Visningsalternativer:**
 - `UseCodes` – vis kun koder
@@ -52,6 +50,7 @@ HTML format er nytt.
 - `SeparatorSemicolon` – semikolon
 
 **Eksempel:**
+
 ```
 outputformat=csv
 outputformatparams=separatorsemicolon,usecodesandtexts
@@ -59,21 +58,22 @@ heading=ContentsCode
 stub=VareGrupper2,Tid
 ```
 
+HTML format er nytt, men har rom for forbedring.
 ---
-
 
 ## Kjente begrensninger
 
 ### 1. Statiske URL-er fra Statistikkbanken
+
 URL-er generert i Statistikkbanken er statiske og inkluderer ikke automatisk fremtidige tall. Dette gjør dem:
+
 - Uoversiktlige og vanskelige å vedlikeholde
 - Nødvendig å redigere manuelt for å få oppdaterte tall
 
-Jeg har laget et optimeringsverktøy: https://nesa.no/ssb/forenkle_url.html
+Jeg har laget et optimaliseringsverktøy: https://nesa.no/ssb/forenkle_url.html
 
 ### 2. URL begrensning på lengde
+
 - Maksimal lengde: ~2000 tegn
-- Spesielt problematisk for korttidsstatistikker med lange tidsserier. For månedsstatistikk går grensen litt før Finanskrisen.
+- Kan være problematisk for korttidsstatistikker med lange tidsserier. For månedsstatistikker går grensen litt før Finanskrisen, om de ikke rettes. 
 
-
----

@@ -1,6 +1,6 @@
 # PxWebApi 2 eksempler
 
-** [Hva er nytt i PxWebApi versjon 2](nytt_i_v2.md) **
+ [**Hva er nytt i PxWebApi versjon 2**](nytt_i_v2.md) 
 
 **Jupyter notebooks**
 
@@ -11,12 +11,12 @@
 [text-code](text-code-api2-nor.ipynb) - Få Kode og Tekst i JSON-stat og Pandas - eksempel med HS-varekoder i månedlig Utenrikshandel
 
 -----
+[Lag dynamisk URL](https://nesa.no/ssb/forenkle_url.html) Endre fra statisk til dynamisk tid i API URL.
 
 [get_many_default_tables](get_many_default_tables.ipynb) er et eksempel på å hente alle tabeller innen en statististikk, her KPI, med det nye default uttrekket. Dette eksemeplet virker for tiden ikke, fordi en før lansering av V2  har besluttet å ta vekk /navigation .
 
 [beta-bruker](beta-bruker.md) er en foreløpig oversettelse til norsk av en litt mangelfull og utdatert brukerveiledning.
 
-[Lag dynamisk URL](https://nesa.no/ssb/forenkle_url.html) Erstatter og forkorter lange statiske URL'et med dynamisk tid.
 
 
 ## In English

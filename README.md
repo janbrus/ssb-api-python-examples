@@ -5,29 +5,21 @@
 
 # Hvordan bruke Python mot SSBs API-er, vist med Jupyter notebooks
 
-Statistisk sentralbyrå (SSB) tilbyr tre API-er for å hente ut og integrere SSBs data med egne systemer. API-ene er åpne og krever ikke registrering:
+Statistisk sentralbyrå (SSB) tilbyr to API-er for å hente ut og integrere SSBs data med egne systemer. API-ene er åpne og krever ikke registrering:
 
-- **API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbanken.
-- **API med ferdige datasett**: Dette enkle API-et gir deg tilgang til 200 oppdaterte datasett med fast URL, hentet fra de mest brukte tabellene i Statistikkbanken. Dette skal avvikles, og erstattes 
+**API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbanken.
+
+SSB kom i oktober 2025 med en **versjon 2 av PxWebApi**. Dette tilbyr http GET, som gjør det lettere å integrere i egne systemer Se **egen [README](PxWebApi2/)** for hva som er nytt og eksempler som benytter versjon 2. 
+
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
-
-
-SSB kom i oktober med en **[versjon 2](https://www.ssb.no/api/api-statistikkbanken) av PxWebApi**. Dette tilbyr http GET. Formatet på http POST er endret. Se **egen [README](PxWebApi2/)** for hva som er nytt og eksempler som benytter versjon 2. 
 
 Det kommer fortsatt mer metadata i JSON-stat2. Det gjelder både versjon 1 og 2 av APIet. Noen av eksemplene under er oppdatert, bl.a. for å vise dette. Flere oppdateringer vil komme.
 
-Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) oppdatert til versjon 1.1 i oktober 2025. Den håndterer også v2 GET Url'er.
+Forøvrig er R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) oppdatert til versjon 1.1 i oktober 2025. Den håndterer også v2 GET URL-er.
 
+Eksemplene under bruker Python [Pandas](https://pandas.pydata.org/).
 
-
-Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
-
-## API med ferdige datasett - CSV - skal avvikles
-- [Varehandel](eks1_doi_csv_nor.ipynb) - veldig enkelt eksempel med lite datasett.
-- Se i stedet [Versjon 2 eksempler](PxWebApi2/README.md)
-
-
-## JSON-stat eksempler for å poste spørringer mot [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)
+## JSON-stat eksempler for å poste spørringer mot [PxWebApi v1](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)
 
 - [apidata](apidata-no.ipynb) - dapla-statbank-client er en python pakke laget av SSB og gjør det enkelt å hente JSON-stat2 datasett via PxWebApi.
 
@@ -48,11 +40,12 @@ Alle eksempler bruker Python [Pandas](https://pandas.pydata.org/).
 
 #### Lenker for mer informasjon:
 - [SSBs API-er med åpne data](https://www.ssb.no/api/).
-- [PxWebApi brukerveiledning](https://www.ssb.no/omssb/_attachment/248256).
+- [PxWebApi v1 brukerveiledning](https://www.ssb.no/omssb/_attachment/248256).
 - [Slik bruker du SSBs statistikkbank](https://www.ssb.no/statbank/hvordan-bruke-statistikkbanken).
 
 **R-bruker?** 
-Bruk i stedet R-pakken [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html). Tips: Har du problem med æøå i API setlocale i R til "no_NO.UTF8"
+Bruk SSBs R-pakke [PxWebApiData](https://CRAN.R-project.org/package=PxWebApiData) og se denne [Introduksjonen](https://cran.r-project.org/package=PxWebApiData/vignettes/Introduction.html). 
+Tips: Har du problem med æøå når du henter data fra API, prøv setlocale i R til `no_NO.UTF8`
 
 <!--- Language: en --->
 # English
@@ -64,11 +57,10 @@ Statistics Norway offers three APIs that allow you to retrieve and integrate SSB
 2. **API for ready-made datasets**: This API provides access to 200 datasets with fixed URLs. This API will be discontinued.
 3. **REST API for statistical classifications and code lists**: This API provides access to statistical classifications and code lists.
 
-In October 2025 Statistics Norway released a version 2 of the PxWebApi. This API supports http GET URLs.
+In October 2025 Statistics Norway released a version 2 of the PxWebApi. This API supports http GET URLs. See [README](PxWebApi2/)
 
 ## Examples using CSV from the [API for Readymade datasets](https://data.ssb.no/api/v0/dataset/?lang=en)
 
-- [Basic](eks1_doi_csv1-en.ipynb) a very basic example on Index of retail sales.
 - [Economic trends](kt-csv-nor.ipynb) Import a readymade CSV dataset, Main Economic Forecasts, to Pandas. Shows basic plots using Pandas plot and Plotly Express.
 
 ## Examples using http POST to query [PxWebApi](https://www.ssb.no/en/omssb/tjenester-og-verktoy/api/px-api)

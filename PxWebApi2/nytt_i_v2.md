@@ -1,9 +1,9 @@
 # Nytt i PxWebApi versjon 2
 
-## Viktigste nyhet: GET URL-støtte
-Innføringen av GET URL-støtte. Det gjør API-et enklere å integrere.
+## GET URL-støtte
+Viktigst er innføringen av GET URL-støtte. Det gjør API-et enklere å integrere.
 
-**Merk:** Versjon 2 er ikke bakoverkompatibel med versjon 1, og det er også nytt format for bruk av HTTP POST. 
+**Merk:** Versjon 2 er ikke bakoverkompatibel med versjon 1, og  
 
 ---
 
@@ -58,7 +58,30 @@ heading=ContentsCode
 stub=VareGrupper2,Tid
 ```
 
-HTML format er nytt, men har rom for forbedring.
+**HTML format** er nytt. Norsk har tusenskille mellomrom, engelsk komma. Kan stiles, f.eks. :
+
+```
+	<style type="text/css">
+	    th[scope="col"] {
+	        text-align: center;
+	    }
+	    th[scope="row"] {
+	        text-align: left;
+	    }
+	    td {
+	        text-align: right;
+	    }
+	    caption {
+	    	font-weight: bold;
+	    }
+	</style>
+```
+
+## Annet nytt
+Det er mer metadata i JSON-stat2, slik som fotnoter. Dette gjelder også for API v1.
+Det er også nytt format for bruk av HTTP POST.
+Det er også kjekt å vite at URL-ene ikke ser ut til å være sensitive for store og små bokstaver.
+
 ---
 
 ## Kjente begrensninger
@@ -68,7 +91,7 @@ HTML format er nytt, men har rom for forbedring.
 URL-er generert i Statistikkbanken er statiske og inkluderer ikke automatisk fremtidige tall. Dette gjør dem:
 
 - Uoversiktlige og vanskelige å vedlikeholde
-- Nødvendig å redigere manuelt for å få oppdaterte tall
+- Nødvendig å redigere manuelt for å få oppdaterte tall, ved å legge inn filtrene from() og top().
 
 Jeg har laget et optimaliseringsverktøy: https://nesa.no/ssb/forenkle_url.html
 
@@ -77,3 +100,7 @@ Jeg har laget et optimaliseringsverktøy: https://nesa.no/ssb/forenkle_url.html
 - Maksimal lengde: ~2000 tegn
 - Kan være problematisk for korttidsstatistikker med lange tidsserier. For månedsstatistikker går grensen litt før Finanskrisen, om de ikke rettes. 
 
+---
+Se også [SSBs brukerveiledning til API V2](https://www.ssb.no/en/api/statbank-pxwebapi-user-guide)
+
+SSBs R pakke [PxWebApiData](https://cran.r-project.org/package=PxWebApiData) er også oppdatert til å håndere V2 URLer.

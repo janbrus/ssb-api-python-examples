@@ -21,6 +21,8 @@
 
 ## In English
 
+[**What's new in PxWebApi version 2**](new_in_v2.md)
+
 [eks1_doi_csv_eng](eks1_doi_csv_eng.ipynb) how to get a simple dataset, Index of Retail Sales, using the new parameters in http GET
 
 [laks_v2_eng](laks_eng.ipynb) shows how to get a datasett as JSON-stat2, using both http GET and POST.

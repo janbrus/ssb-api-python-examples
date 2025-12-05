@@ -9,7 +9,7 @@ Statistisk sentralbyrå (SSB) tilbyr to API-er for å hente ut og integrere SSBs
 
 **API for å poste spørringer i JSON mot alle Statistikkbankens 7000 tabeller (PxWebApi)**: Dette API-et lar deg sende spørringer i JSON-format mot alle tabeller i Statistikkbanken.
 
-SSB kom i oktober 2025 med en **versjon 2 av PxWebApi**. Dette tilbyr http GET, som gjør det lettere å integrere i egne systemer Se **egen [README](PxWebApi2/)** for hva som er nytt og eksempler som benytter versjon 2. 
+SSB kom i oktober 2025 med en **versjon 2 av PxWebApi**. Dette tilbyr http GET, som gjør det lettere å integrere i egne systemer Se **egen [README](https://github.com/janbrus/ssb-api-v2-examples/)** for hva som er nytt og eksempler som benytter versjon 2. 
 
 - **REST API for statistiske klassifikasjoner og kodelister**: Dette API-et gir deg tilgang til statistiske klassifikasjoner og kodelister (Klass).
 
@@ -57,7 +57,7 @@ Statistics Norway offers three APIs that allow you to retrieve and integrate SSB
 2. **API for ready-made datasets**: This API provides access to 200 datasets with fixed URLs. This API will be discontinued.
 3. **REST API for statistical classifications and code lists**: This API provides access to statistical classifications and code lists.
 
-In October 2025 Statistics Norway released a version 2 of the PxWebApi. This API supports http GET URLs. See [README](PxWebApi2/)
+In October 2025 Statistics Norway released a version 2 of the PxWebApi. This API supports http GET URLs. See [README](https://github.com/janbrus/ssb-api-v2-examples/)
 
 ## Examples using CSV from the [API for Readymade datasets](https://data.ssb.no/api/v0/dataset/?lang=en)
 
